@@ -25,7 +25,6 @@ public class P1
             System.err.println("Error reading file");
             System.exit(1);
         }
-
     }
 
     public ArrayList<WAR> readData(String filename) throws Exception
@@ -36,7 +35,8 @@ public class P1
 
         // Line that has been read
         String data;
-        if (input.hasNext()) {
+        if (input.hasNext())
+        {
             data = input.nextLine() + " ";
         }
         else
@@ -47,12 +47,13 @@ public class P1
         ArrayList<WAR> wars = new ArrayList<WAR>();
         for (int i = 0; i < data.length() - 2; i++)
         {
-            if (data.substring(i, i+2).equals("N=")) {
+            if (data.substring(i, i + 2).equals("N="))
+            {
                 i += 2;
                 int warNums = 0;
                 for (int j = i; j < data.length(); j++)
                 {
-                    if (data.substring(j, j+1).equals(" "))
+                    if (data.substring(j, j + 1).equals(" "))
                     {
                         warNums = Integer.valueOf(data.substring(i, j));
                         break;
@@ -63,12 +64,13 @@ public class P1
                     wars.add(new WAR(2, true));
                 }
             }
-            if (data.substring(i, i+2).equals("S=")) {
+            if (data.substring(i, i + 2).equals("S="))
+            {
                 i += 2;
                 int warNums = 0;
                 for (int j = i; j < data.length(); j++)
                 {
-                    if (data.substring(j, j+1).equals(" "))
+                    if (data.substring(j, j + 1).equals(" "))
                     {
                         warNums = Integer.valueOf(data.substring(i, j));
                         break;
@@ -79,12 +81,13 @@ public class P1
                     wars.add(new WAR(2, false));
                 }
             }
-            if (data.substring(i, i+2).equals("E=")) {
+            if (data.substring(i, i + 2).equals("E="))
+            {
                 i += 2;
                 int warNums = 0;
                 for (int j = i; j < data.length(); j++)
                 {
-                    if (data.substring(j, j+1).equals(" "))
+                    if (data.substring(j, j + 1).equals(" "))
                     {
                         warNums = Integer.valueOf(data.substring(i, j));
                         break;
@@ -95,12 +98,13 @@ public class P1
                     wars.add(new WAR(1, false));
                 }
             }
-            if (data.substring(i, i+2).equals("W=")) {
+            if (data.substring(i, i + 2).equals("W="))
+            {
                 i += 2;
                 int warNums = 0;
                 for (int j = i; j < data.length(); j++)
                 {
-                    if (data.substring(j, j+1).equals(" "))
+                    if (data.substring(j, j + 1).equals(" "))
                     {
                         warNums = Integer.valueOf(data.substring(i, j));
                         break;
@@ -114,9 +118,4 @@ public class P1
         }
         return wars;
     }
-
-
-
-
 }
-
