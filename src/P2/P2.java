@@ -29,15 +29,20 @@ public class P2
         }
 
         Printer printer = new Printer(jobs);
-
+        ArrayList<PrintHead> printHeads = new ArrayList();
         for (int i = 0; i < 3; i++)
         {
-            threads.add(new Thread(new PrintHead(printer)));
+            PrintHead temp = new PrintHead(printer);
+            threads.add(new Thread(temp));
+            printHeads.add(temp);
         }
         for (Thread thread : threads)
         {
             thread.start();
         }
+        // Start the printer to track global time in the main thread
+        printer.setPrintHeads(printHeads);
+        printer.start();
     }
 
     public ArrayList<Job> generateFromFile(String filename) throws Exception
