@@ -22,9 +22,8 @@ public class P1
         }
         catch (Exception e)
         {
-            System.err.println(e);
-            //System.err.println("Error reading file");
-            //System.exit(1);
+            System.err.println("Error reading file");
+            System.exit(1);
         }
 
     }
