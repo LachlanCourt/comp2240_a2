@@ -15,7 +15,7 @@ public class P1
     public void run(String[] args)
     {
         // Check that the file is valid, if the read throws an exception, terminate the simulation
-        ArrayList<WAR> wars;
+        ArrayList<WAR> wars = new ArrayList();
         try
         {
             wars = readData(args[0]);
@@ -24,6 +24,11 @@ public class P1
         {
             System.err.println("Error reading file");
             System.exit(1);
+        }
+
+        for (WAR war : wars)
+        {
+            war.run();
         }
     }
 

@@ -1,6 +1,6 @@
 package P1;
 
-public class WAR
+public class WAR implements Runnable
 {
     private int track;
     private boolean status;
@@ -11,5 +11,10 @@ public class WAR
     {
         track = track_;
         status = status_;
+    }
+
+    @Override public void run()
+    {
+        System.out.println("track: " + track + " status: " + status);
     }
 }
