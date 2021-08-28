@@ -16,9 +16,11 @@ public class P1
     {
         // Check that the file is valid, if the read throws an exception, terminate the simulation
         ArrayList<WAR> wars = new ArrayList();
+        Intersection intersection = new Intersection();
         try
         {
-            wars = readData(args[0]);
+
+            wars = generateFromFile(args[0], intersection);
         }
         catch (Exception e)
         {
@@ -32,7 +34,7 @@ public class P1
         }
     }
 
-    public ArrayList<WAR> readData(String filename) throws Exception
+    public ArrayList<WAR> generateFromFile(String filename, Intersection intersection) throws Exception
     {
         // Declare Scanner to read from the file
         Scanner input;
@@ -49,7 +51,7 @@ public class P1
             throw new Exception("Invalid file");
         }
 
-        ArrayList<WAR> wars = new ArrayList<WAR>();
+        ArrayList<WAR> wars = new ArrayList();
         for (int i = 0; i < data.length() - 2; i++)
         {
             if (data.substring(i, i + 2).equals("N="))
@@ -66,7 +68,7 @@ public class P1
                 }
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(2, true));
+                    wars.add(new WAR(2, true, intersection));
                 }
             }
             if (data.substring(i, i + 2).equals("S="))
@@ -83,7 +85,7 @@ public class P1
                 }
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(2, false));
+                    wars.add(new WAR(2, false, intersection));
                 }
             }
             if (data.substring(i, i + 2).equals("E="))
@@ -100,7 +102,7 @@ public class P1
                 }
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(1, false));
+                    wars.add(new WAR(1, false, intersection));
                 }
             }
             if (data.substring(i, i + 2).equals("W="))
@@ -117,7 +119,7 @@ public class P1
                 }
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(1, true));
+                    wars.add(new WAR(1, true, intersection));
                 }
             }
         }
