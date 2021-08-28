@@ -16,7 +16,7 @@ jobs:
     - name: makeP1
       run: cd src && javac P1/P1.java
     - name: runP1
-      run: cd src && java P1/P1 P1/P1-1in.txt
+      run: cd src && java P1/P1 P1/P1-1in.txt 5
     - name: makeP2
       run: cd src && javac P2/P2.java
     - name: runP2

@@ -17,7 +17,13 @@ public class P1
         // Check that the file is valid, if the read throws an exception, terminate the simulation
         ArrayList<WAR> wars = new ArrayList();
         ArrayList<Thread> threads = new ArrayList();
-        Intersection intersection = new Intersection();
+
+        int maxRun = 150;
+        if (args.length > 1)
+        {
+            maxRun = Integer.valueOf(args[1]);
+        }
+        Intersection intersection = new Intersection(maxRun);
 
         try
         {
