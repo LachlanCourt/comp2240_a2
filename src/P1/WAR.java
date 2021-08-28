@@ -17,21 +17,31 @@ public class WAR implements Runnable
 
     @Override public void run()
     {
-        System.out.println(name + " Coming online:\nTrack: " + track + " status: " + (status ? "Loaded": "Unloaded"));
+        System.out.println(name + " Coming online:\nTrack: " + track + " status: " + (status ? "Loaded" : "Unloaded"));
         while (intersection.getRunning())
         {
-            System.out.println(name + " (" + (status ? "Loaded" : "Unloaded") + "): Waiting at the Intersection. Going towards " + (status ? "Dock" : "Storage") + track);
+            System.out.println(name + " (" + (status ? "Loaded" : "Unloaded")
+                               + "): Waiting at the Intersection. Going towards " + (status ? "Dock" : "Storage")
+                               + track);
             // Critical section
-            try {
+            try
+            {
                 intersection.getBlock().acquire();
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e)
+            {
                 e.printStackTrace();
             }
-            for (int i = 1; i <= 3; i++) {
-                System.out.println(name + " (" + (status ? "Loaded" : "Unloaded") + "): Crossing intersection Checkpoint " + i + ".");
-                try {
+            for (int i = 1; i <= 3; i++)
+            {
+                System.out.println(name + " (" + (status ? "Loaded" : "Unloaded")
+                                   + "): Crossing intersection Checkpoint " + i + ".");
+                try
+                {
                     Thread.sleep(200);
-                } catch (InterruptedException e) {
+                }
+                catch (InterruptedException e)
+                {
                     e.printStackTrace();
                 }
             }
@@ -39,7 +49,6 @@ public class WAR implements Runnable
             intersection.getBlock().release();
             // End Critical section
             status = !status;
-
         }
         // System.out.println("track: " + track + " status: " + status);
     }
