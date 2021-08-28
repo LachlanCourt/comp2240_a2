@@ -5,12 +5,19 @@ public class PrintHead implements Runnable
     private Printer printer;
     private boolean printing;
     private int startTime;
+    private int id;
 
-    public PrintHead(Printer printer_)
+    public PrintHead(Printer printer_, int id_)
     {
         printer = printer_;
         printing = false;
         startTime = 0;
+        id = id_;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public boolean printing()
@@ -26,19 +33,32 @@ public class PrintHead implements Runnable
             synchronized (this) {
                 if (printer.validJobNext()) {
                     job = printer.getJob();
+                    if (job != null) {
+                        System.out.println("(" + printer.getTime() + ") " + job.getId() + " uses head " + id + " (time:" + job.getSize() + ")");
+                        printing = true;
+                        startTime = printer.getTime();
+                    }
                 }
 
                 if (job == null) {
                     break;
                 }
-                printing = true;
             }
 
             if (printing) {
                 while (printer.getTime() < startTime + job.getSize()) {
+                    try
+                    {
+                        Thread.sleep(10);
+                    }
+                    catch (InterruptedException e)
+                    {
+                        // pass
+                    }
+                    //System.out.println("Head " + id + " printing job " + job.getId() + ", current time is " + printer.getTime());
                     // vibe
                 }
-                System.out.println(printer.getTime() + " job: " + job.getId());
+
                 printing = false;
             }
         }

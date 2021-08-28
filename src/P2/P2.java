@@ -32,16 +32,16 @@ public class P2
         ArrayList<PrintHead> printHeads = new ArrayList();
         for (int i = 0; i < 3; i++)
         {
-            PrintHead temp = new PrintHead(printer);
+            PrintHead temp = new PrintHead(printer, i + 1);
             threads.add(new Thread(temp));
             printHeads.add(temp);
         }
+        printer.setPrintHeads(printHeads);
         for (Thread thread : threads)
         {
             thread.start();
         }
         // Start the printer to track global time in the main thread
-        printer.setPrintHeads(printHeads);
         printer.start();
     }
 

@@ -32,7 +32,7 @@ public class Printer
             }
             currentTime++;
         }
-
+        currentTime--; // Time will be one more than the actual finish time because the loop above increments before checking if it is done
         System.out.println("(" + currentTime + ")" + " DONE");
     }
 
@@ -50,6 +50,7 @@ public class Printer
         {
             jobType = "none";
         }
+        //System.out.println(jobType);
         return jobType.equals("none") || ((jobs.size() > 0) && (jobs.get(0).getType().equals(jobType)));
     }
 
@@ -70,7 +71,11 @@ public class Printer
     Job getJob()
     {
         if (jobs.size() > 0) {
-            return jobs.remove(0);
+            Job job = jobs.remove(0);
+            if (job != null) {
+                jobType = job.getType();
+            }
+            return job;
         }
         return null;
     }
