@@ -16,10 +16,11 @@ public class P1
     {
         // Check that the file is valid, if the read throws an exception, terminate the simulation
         ArrayList<WAR> wars = new ArrayList();
+        ArrayList<Thread> threads = new ArrayList();
         Intersection intersection = new Intersection();
+
         try
         {
-
             wars = generateFromFile(args[0], intersection);
         }
         catch (Exception e)
@@ -30,7 +31,11 @@ public class P1
 
         for (WAR war : wars)
         {
-            war.run();
+            threads.add(new Thread(war));
+        }
+        for (Thread thread : threads)
+        {
+            thread.start();
         }
     }
 
