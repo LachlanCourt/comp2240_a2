@@ -56,6 +56,7 @@ public class P1
             throw new Exception("Invalid file");
         }
 
+        int warCount = 1;
         ArrayList<WAR> wars = new ArrayList();
         for (int i = 0; i < data.length() - 2; i++)
         {
@@ -73,7 +74,8 @@ public class P1
                 }
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(2, true, intersection));
+                    wars.add(new WAR(2, true, warCount, intersection));
+                    warCount++;
                 }
             }
             if (data.substring(i, i + 2).equals("S="))
@@ -90,7 +92,8 @@ public class P1
                 }
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(2, false, intersection));
+                    wars.add(new WAR(2, false, warCount, intersection));
+                    warCount++;
                 }
             }
             if (data.substring(i, i + 2).equals("E="))
@@ -107,7 +110,8 @@ public class P1
                 }
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(1, false, intersection));
+                    wars.add(new WAR(1, false, warCount, intersection));
+                    warCount++;
                 }
             }
             if (data.substring(i, i + 2).equals("W="))
@@ -124,7 +128,8 @@ public class P1
                 }
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(1, true, intersection));
+                    wars.add(new WAR(1, true, warCount, intersection));
+                    warCount++;
                 }
             }
         }
