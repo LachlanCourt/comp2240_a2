@@ -11,13 +11,12 @@ public class Intersection
 
     public Intersection()
     {
-        block  = new Semaphore(1, true);
+        block = new Semaphore(1, true);
         running = true;
 
         trackCount = new ArrayList<>();
         trackCount.add(0);
         trackCount.add(0);
-
     }
 
     public Semaphore getBlock()
@@ -32,10 +31,10 @@ public class Intersection
 
     public void reportPass(int track)
     {
-        track -= 1; // Arrays index from 0 but tracks are 1 and 2
+        track -= 1;  // Arrays index from 0 but tracks are 1 and 2
         trackCount.set(track, trackCount.get(track) + 1);
 
-        //System.out.println("Track 1: " + trackCount.get(0) + " Track 2: " + trackCount.get(1));
+        // System.out.println("Track 1: " + trackCount.get(0) + " Track 2: " + trackCount.get(1));
         if ((trackCount.get(0) >= 150) && (trackCount.get(1) > 150))
         {
             running = false;
