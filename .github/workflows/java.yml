@@ -14,14 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: makeP1
-      run: cd src/P1 && javac P1.java
+      run: cd src && javac P1/P1.java
     - name: runP1
       run: cd src/P1 && java P1 P1-1in.txt
     - name: makeP2
-      run: cd src/P2 && javac P2.java
+      run: cd src && javac P2/P2.java
     - name: runP2
       run: cd src/P2 && java P2 P2-1in.txt
     - name: makeP3
-      run: cd src/P3 && javac P3.java
+      run: cd src && javac P3/P3.java
     - name: runP3
       run: cd src/P3 && java P3 P2-1in.txt
