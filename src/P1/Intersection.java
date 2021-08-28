@@ -9,12 +9,13 @@ public class Intersection
     private boolean running;
     private static ArrayList<Integer> trackCount;
 
-    public static final int MAX_CROSSING = 150;
+    public final int MAX_CROSSING;
 
-    public Intersection()
+    public Intersection(int maxRun)
     {
         block = new Semaphore(1, true);
         running = true;
+        MAX_CROSSING = maxRun;
 
         trackCount = new ArrayList<>();
         trackCount.add(0);

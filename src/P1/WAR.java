@@ -42,7 +42,7 @@ public class WAR implements Runnable
                 }
                 catch (InterruptedException e)
                 {
-                    e.printStackTrace();
+                    // Will never be interrupted
                 }
             }
             intersection.reportPass(track);
