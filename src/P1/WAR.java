@@ -19,7 +19,7 @@ public class WAR implements Runnable
 
     @Override public void run()
     {
-        System.out.println("track: " + track + " status: " + status);
+        //System.out.println("track: " + track + " status: " + status);
         while (intersection.getRunning())
         {
             intersection.reportPass(track);
