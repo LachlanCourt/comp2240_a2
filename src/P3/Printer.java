@@ -48,7 +48,7 @@ public class Printer
     public Semaphore getBlock()
     {
         return block;
-
+    }
     public boolean validJobNext()
     {
         boolean done = true;
