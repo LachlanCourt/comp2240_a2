@@ -29,8 +29,8 @@ public class P3
     public void run(String[] args)
     {
 
-        ArrayList<Job> jobs = new ArrayList();
-        ArrayList<Thread> threads = new ArrayList();
+        ArrayList<Job> jobs = new ArrayList<Job>();
+        ArrayList<Thread> threads = new ArrayList<Thread>();
 
         // Check that the file is valid, if the read throws an exception, terminate the simulation
         try
@@ -46,7 +46,7 @@ public class P3
         // Create a printer to manage the simulation
         Printer printer = new Printer(jobs);
         // Create a list of three printheads
-        ArrayList<PrintHead> printHeads = new ArrayList();
+        ArrayList<PrintHead> printHeads = new ArrayList<PrintHead>();
         for (int i = 0; i < 3; i++)
         {
             // Create each print head with a unique id and add it to both the printHeads list and the list of threads
@@ -77,7 +77,7 @@ public class P3
         Scanner input;
         input = new Scanner(new File(filename));
 
-        ArrayList<Job> jobs = new ArrayList();
+        ArrayList<Job> jobs = new ArrayList<Job>();
 
         // First line indicates the number of jobs which I then proceed to blatantly ignore
         String line = input.nextLine();
