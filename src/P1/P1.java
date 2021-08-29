@@ -84,7 +84,7 @@ public class P1
         String data;
         if (input.hasNext())
         {
-            data = input.nextLine() + " "; // Loops below use space delimiter
+            data = input.nextLine() + " ";  // Loops below use space delimiter
         }
         else
         {
