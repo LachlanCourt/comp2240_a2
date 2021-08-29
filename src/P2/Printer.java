@@ -68,7 +68,7 @@ public class Printer
         jobType = jobType_;
     }
 
-    Job getJob()
+    synchronized Job getJob()
     {
         if (jobs.size() > 0) {
             Job job = jobs.remove(0);
