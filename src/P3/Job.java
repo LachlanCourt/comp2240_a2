@@ -1,3 +1,13 @@
+/*******************************************************************************
+ ****    COMP2240 Assignment 2
+ ****    c3308061
+ ****    Lachlan Court
+ ****    29/08/2021
+ ****    This class represents a Job to be undertaken by the printer. It has
+ ****    member variables to refer to the size of the job and a unique ID, and
+ ****    whether it is monochrome or colour
+ *******************************************************************************/
+
 package P3;
 
 public class Job
@@ -7,6 +17,7 @@ public class Job
     private int size;
     private String type;
 
+    // Constructor
     public Job(String id_, int size_)
     {
         id = id_;
@@ -15,11 +26,11 @@ public class Job
         type = id_.substring(0, 1);
     }
 
+    // Getters
     public String getId()
     {
         return id;
     }
-
 
     public int getIntId()
     {
