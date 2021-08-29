@@ -37,7 +37,7 @@ public class Intersection
         track -= 1;  // Arrays index from 0 but tracks are 1 and 2
         trackCount.set(track, trackCount.get(track) + 1);
         System.out.println("Total crossed in Track1: " + trackCount.get(0) + " Track 2: " + trackCount.get(1));
-        if ((trackCount.get(0) > MAX_CROSSING) && (trackCount.get(1) > MAX_CROSSING))
+        if ((trackCount.get(0) >= MAX_CROSSING) && (trackCount.get(1) >= MAX_CROSSING))
         {
             running = false;
         }
