@@ -1,3 +1,12 @@
+/*******************************************************************************
+ ****    COMP2240 Assignment 2
+ ****    c3308061
+ ****    Lachlan Court
+ ****    29/08/2021
+ ****    This class houses the main run of the program. It creates 3 threads to
+ ****    simulate three concurrently running print heads, and starts them all
+ *******************************************************************************/
+
 package P2;
 
 import java.io.File;
@@ -6,18 +15,24 @@ import java.util.Scanner;
 
 public class P2
 {
+    // Create instance of P2 and start
     public static void main(String[] args)
     {
         P2 p = new P2();
         p.run(args);
     }
 
+    /**
+     * Main run of the program. Manages reading data from file, then creates three print heads and starts them all
+     * @param args the command line argument, a required filename
+     */
     public void run(String[] args)
     {
-        // Check that the file is valid, if the read throws an exception, terminate the simulation
+
         ArrayList<Job> jobs = new ArrayList();
         ArrayList<Thread> threads = new ArrayList();
 
+        // Check that the file is valid, if the read throws an exception, terminate the simulation
         try
         {
             jobs = generateFromFile(args[0]);
@@ -28,15 +43,20 @@ public class P2
             System.exit(1);
         }
 
+        // Create a printer to manage the simulation
         Printer printer = new Printer(jobs);
+        // Create a list of three printheads
         ArrayList<PrintHead> printHeads = new ArrayList();
         for (int i = 0; i < 3; i++)
         {
+            // Create each print head with a unique id and add it to both the printHeads list and the list of threads
             PrintHead temp = new PrintHead(printer, i + 1);
             threads.add(new Thread(temp));
             printHeads.add(temp);
         }
+        // Make the printer aware of its printheads
         printer.setPrintHeads(printHeads);
+        // Start threads
         for (Thread thread : threads)
         {
             thread.start();
@@ -45,6 +65,12 @@ public class P2
         printer.start();
     }
 
+    /**
+     * Generates Jobs from a file
+     * @param filename name of file to be read
+     * @return an array of Jobs
+     * @throws Exception a file read error either an invalid filename or an empty file
+     */
     public ArrayList<Job> generateFromFile(String filename) throws Exception
     {
         // Declare Scanner to read from the file
@@ -53,11 +79,12 @@ public class P2
 
         ArrayList<Job> jobs = new ArrayList();
 
-        // Line that has been read
+        // First line indicates the number of jobs which I then proceed to blatantly ignore
         String line = input.nextLine();
-        int noJobs = Integer.valueOf(line);
+        // Loop while there are still lines in the file
         while (input.hasNext())
         {
+            // Create a new Job and add it to the list
             String id = input.next();
             int size = Integer.valueOf(input.nextLine().substring(1));
             jobs.add(new Job(id, size));
