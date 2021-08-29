@@ -66,7 +66,7 @@ public class PrintHead implements Runnable
                 {
                     // If the job is not null, start it running
                     System.out.println("(" + printer.getTime() + ") " + job.getId() + " uses head " + id
-                            + " (time:" + job.getSize() + ")");
+                                       + " (time:" + job.getSize() + ")");
                     printing = true;
                     startTime = printer.getTime();
                 }

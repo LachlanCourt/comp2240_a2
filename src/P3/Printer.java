@@ -72,7 +72,7 @@ public class Printer
         currentTime--;
         // Output when complete
         System.out.println("(" + currentTime + ")"
-                + " DONE");
+                           + " DONE");
     }
 
     /**
