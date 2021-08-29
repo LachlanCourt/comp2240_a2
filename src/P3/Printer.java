@@ -44,10 +44,10 @@ public class Printer
                            + " DONE");
     }
 
+
     public Semaphore getBlock()
     {
         return block;
-    }
 
     public boolean validJobNext()
     {
