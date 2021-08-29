@@ -1,8 +1,5 @@
 package P3;
 
-import P2.Job;
-import P2.Printer;
-
 public class PrintHead implements Runnable
 {
     private Printer printer;

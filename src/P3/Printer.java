@@ -1,8 +1,5 @@
 package P3;
 
-import P2.Job;
-import P2.PrintHead;
-
 import java.util.ArrayList;
 
 public class Printer
