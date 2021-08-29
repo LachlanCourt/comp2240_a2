@@ -30,9 +30,13 @@ public class PrintHead implements Runnable
         Job job = null;
         while (!printer.isFinished())
         {
-            synchronized (printer)
-            {
-                if (printer.validJobNext())
+            try {
+                printer.getBlock().acquire();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                break;
+            }
+            if (printer.validJobNext())
                 {
                     job = printer.getJob();
                     if (job != null)
@@ -46,9 +50,10 @@ public class PrintHead implements Runnable
 
                 if (job == null)
                 {
+                    printer.getBlock().release();
                     break;
                 }
-            }
+            printer.getBlock().release();
 
             if (printing)
             {

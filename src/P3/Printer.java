@@ -1,6 +1,7 @@
 package P3;
 
 import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 
 public class Printer
 {
@@ -8,12 +9,14 @@ public class Printer
     ArrayList<Job> jobs;
     int currentTime;
     ArrayList<PrintHead> printHeads;
+    private Semaphore block;
 
     public Printer(ArrayList<Job> jobs_)
     {
         jobType = "none";
         jobs = jobs_;
         currentTime = 0;
+        block = new Semaphore(1, true);
     }
 
     public void setPrintHeads(ArrayList<PrintHead> printHeads_)
@@ -39,6 +42,11 @@ public class Printer
                         // checking if it is done
         System.out.println("(" + currentTime + ")"
                            + " DONE");
+    }
+
+    public Semaphore getBlock()
+    {
+        return block;
     }
 
     public boolean validJobNext()
