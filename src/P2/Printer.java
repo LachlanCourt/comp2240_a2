@@ -73,7 +73,7 @@ public class Printer
         jobType = jobType_;
     }
 
-    synchronized Job getJob()
+    Job getJob()
     {
         if (jobs.size() > 0)
         {
