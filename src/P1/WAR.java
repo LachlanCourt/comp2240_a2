@@ -17,11 +17,12 @@ public class WAR implements Runnable
 
     @Override public void run()
     {
-        System.out.println(name + " Coming online:\nTrack: " + track + " status: " + (status ? "Loaded" : "Unloaded"));
+        // System.out.println(name + " Coming online:\nTrack: " + track + " status: " + (status ? "Loaded" :
+        // "Unloaded"));
         while (intersection.getRunning())
         {
             System.out.println(name + " (" + (status ? "Loaded" : "Unloaded")
-                               + "): Waiting at the Intersection. Going towards " + (status ? "Dock" : "Storage")
+                               + ") Waiting at the Intersection. Going towards " + (status ? "Dock" : "Storage")
                                + track);
             // Critical section
             try
@@ -31,11 +32,17 @@ public class WAR implements Runnable
             catch (InterruptedException e)
             {
                 e.printStackTrace();
+                break;
+            }
+            if (!intersection.getRunning())
+            {
+                intersection.getBlock().release();
+                break;
             }
             for (int i = 1; i <= 3; i++)
             {
                 System.out.println(name + " (" + (status ? "Loaded" : "Unloaded")
-                                   + "): Crossing intersection Checkpoint " + i + ".");
+                                   + ") Crossing intersection Checkpoint " + i + ".");
                 try
                 {
                     Thread.sleep(200);
@@ -45,6 +52,7 @@ public class WAR implements Runnable
                     // Will never be interrupted
                 }
             }
+            System.out.println(name + " (" + (status ? "Loaded" : "Unloaded") + ") Crossed the intersection.");
             intersection.reportPass(track);
             intersection.getBlock().release();
             // End Critical section
