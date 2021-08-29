@@ -30,7 +30,7 @@ public class PrintHead implements Runnable
         Job job = null;
         while (!printer.isFinished())
         {
-            synchronized (this)
+            synchronized (printer)
             {
                 if (printer.validJobNext())
                 {
