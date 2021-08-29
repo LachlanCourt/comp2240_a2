@@ -13,6 +13,6 @@ Assignment was split into three separate problems
 3. `javac P3/P3.java`
 
 ### Run
-1. `java P1/P1 P1-1in.txt`
-2. `java P2/P2 P2-1in.txt`
-3. `java P3/P3 P2-1in.txt`
+1. `java P1/P1 P1/P1-1in.txt`
+2. `java P2/P2 P2/P2-1in.txt`
+3. `java P3/P3 P3/P2-1in.txt`
