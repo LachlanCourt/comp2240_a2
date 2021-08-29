@@ -30,23 +30,30 @@ public class PrintHead implements Runnable
         Job job = null;
         while (!printer.isFinished())
         {
-            synchronized (this) {
-                if (printer.validJobNext()) {
+            synchronized (this)
+            {
+                if (printer.validJobNext())
+                {
                     job = printer.getJob();
-                    if (job != null) {
-                        System.out.println("(" + printer.getTime() + ") " + job.getId() + " uses head " + id + " (time:" + job.getSize() + ")");
+                    if (job != null)
+                    {
+                        System.out.println("(" + printer.getTime() + ") " + job.getId() + " uses head " + id
+                                           + " (time:" + job.getSize() + ")");
                         printing = true;
                         startTime = printer.getTime();
                     }
                 }
 
-                if (job == null) {
+                if (job == null)
+                {
                     break;
                 }
             }
 
-            if (printing) {
-                while (printer.getTime() < startTime + job.getSize()) {
+            if (printing)
+            {
+                while (printer.getTime() < startTime + job.getSize())
+                {
                     try
                     {
                         Thread.sleep(10);
@@ -55,7 +62,8 @@ public class PrintHead implements Runnable
                     {
                         // pass
                     }
-                    //System.out.println("Head " + id + " printing job " + job.getId() + ", current time is " + printer.getTime());
+                    // System.out.println("Head " + id + " printing job " + job.getId() + ", current time is " +
+                    // printer.getTime());
                     // vibe
                 }
 
