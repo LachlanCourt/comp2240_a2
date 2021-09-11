@@ -8,17 +8,15 @@
  ****    time, and acquires its semaphore for mutual exclusion
  *******************************************************************************/
 
-package P3;
-
 public class PrintHead implements Runnable
 {
-    private Printer printer;
+    private P3_Printer printer;
     private boolean printing;
     private int startTime;
     private int id;
 
     // Constructor
-    public PrintHead(Printer printer_, int id_)
+    public PrintHead(P3_Printer printer_, int id_)
     {
         printer = printer_;
         printing = false;
@@ -43,7 +41,7 @@ public class PrintHead implements Runnable
     @Override public void run()
     {
         // Initialise job
-        Job job = null;
+        P2_P3_Job job = null;
         // Loop while the simulation is not complete
         while (!printer.isFinished())
         {

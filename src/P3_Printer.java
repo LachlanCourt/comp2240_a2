@@ -10,20 +10,18 @@
  ****    semaphore
  *******************************************************************************/
 
-package P3;
-
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
 public class Printer
 {
     private String jobType;
-    ArrayList<Job> jobs;
+    ArrayList<P2_P3_Job> jobs;
     int currentTime;
     ArrayList<PrintHead> printHeads;
     private Semaphore block;
 
-    public Printer(ArrayList<Job> jobs_)
+    public Printer(ArrayList<P2_P3_Job> jobs_)
     {
         jobType = "none";
         jobs = jobs_;
@@ -125,11 +123,11 @@ public class Printer
      * Gets the next job in the list
      * @return the next job iin the list, or null if the list is empty
      */
-    Job getJob()
+    P2_P3_Job getJob()
     {
         if (jobs.size() > 0)
         {
-            Job job = jobs.remove(0);
+            P2_P3_Job job = jobs.remove(0);
             if (job != null)
             {
                 jobType = job.getType();
