@@ -8,17 +8,15 @@
  ****    Intersection class each time it passes the intersection
  *******************************************************************************/
 
-package P1;
-
-public class WAR implements Runnable
+public class P1_WAR implements Runnable
 {
     private int track;
     private boolean status;
     String name;
-    Intersection intersection;
+    P1_Intersection intersection;
 
     // Constructor
-    public WAR(int track_, boolean status_, int identifier, Intersection intersection_)
+    public P1_WAR(int track_, boolean status_, int identifier, P1_Intersection intersection_)
     {
         track = track_;
         status = status_;

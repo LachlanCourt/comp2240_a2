@@ -8,12 +8,10 @@
  ****    crossed each track
  *******************************************************************************/
 
-package P1;
-
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-public class Intersection
+public class P1_Intersection
 {
     // Semaphore to manage mutual exclusion
     private Semaphore block;
@@ -25,7 +23,7 @@ public class Intersection
     private final int MAX_CROSSING;
 
     // Constructor
-    public Intersection(int maxRun)
+    public P1_Intersection(int maxRun)
     {
         block = new Semaphore(1, true);
         running = true;

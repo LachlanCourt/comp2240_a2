@@ -8,8 +8,6 @@
  ****    starts them to run concurrently
  *******************************************************************************/
 
-package P1;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -42,8 +40,8 @@ public class P1
         catch (Exception e)
         {}  // Ignore exception - just run with 150 if the argument is invalid
 
-        Intersection intersection = new Intersection(maxRun);
-        ArrayList<WAR> wars = new ArrayList<WAR>();
+        P1_Intersection intersection = new P1_Intersection(maxRun);
+        ArrayList<P1_WAR> wars = new ArrayList<P1_WAR>();
         ArrayList<Thread> threads = new ArrayList<Thread>();
         // Check that the file is valid, if the read throws an exception, terminate the simulation
         try
@@ -57,7 +55,7 @@ public class P1
         }
 
         // Start a thread for each WAR and pass each thread one of the WARs from the ArrayList
-        for (WAR war : wars)
+        for (P1_WAR war : wars)
         {
             threads.add(new Thread(war));
         }
@@ -75,7 +73,7 @@ public class P1
      * @return an array of WARS
      * @throws Exception a file read error either an invalid filename or an empty file
      */
-    public ArrayList<WAR> generateFromFile(String filename, Intersection intersection) throws Exception
+    public ArrayList<P1_WAR> generateFromFile(String filename, P1_Intersection intersection) throws Exception
     {
         // Declare Scanner to read from the file
         Scanner input = new Scanner(new File(filename));
@@ -93,7 +91,7 @@ public class P1
 
         // Initialise unique ID and new list of WARs
         int warCount = 1;
-        ArrayList<WAR> wars = new ArrayList<WAR>();
+        ArrayList<P1_WAR> wars = new ArrayList<P1_WAR>();
         // Loop through the line of text read from file
         for (int i = 0; i < data.length() - 2; i++)
         {
@@ -115,7 +113,7 @@ public class P1
                 // Create the specified number of WARs on that track
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(2, true, warCount, intersection));
+                    wars.add(new P1_WAR(2, true, warCount, intersection));
                     warCount++;
                 }
             }
@@ -137,7 +135,7 @@ public class P1
                 // Create the specified number of WARs on that track
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(2, false, warCount, intersection));
+                    wars.add(new P1_WAR(2, false, warCount, intersection));
                     warCount++;
                 }
             }
@@ -159,7 +157,7 @@ public class P1
                 // Create the specified number of WARs on that track
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(1, false, warCount, intersection));
+                    wars.add(new P1_WAR(1, false, warCount, intersection));
                     warCount++;
                 }
             }
@@ -181,7 +179,7 @@ public class P1
                 // Create the specified number of WARs on that track
                 for (int k = 0; k < warNums; k++)
                 {
-                    wars.add(new WAR(1, true, warCount, intersection));
+                    wars.add(new P1_WAR(1, true, warCount, intersection));
                     warCount++;
                 }
             }
