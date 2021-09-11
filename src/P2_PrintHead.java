@@ -8,17 +8,15 @@
  ****    time
  *******************************************************************************/
 
-package P2;
-
-public class PrintHead implements Runnable
+public class P2_PrintHead implements Runnable
 {
-    private Printer printer;
+    private P2_Printer printer;
     private boolean printing;
     private int startTime;
     private int id;
 
     // Constructor
-    public PrintHead(Printer printer_, int id_)
+    public P2_PrintHead(P2_Printer printer_, int id_)
     {
         printer = printer_;
         printing = false;
@@ -43,7 +41,7 @@ public class PrintHead implements Runnable
     @Override public void run()
     {
         // Initialise job
-        Job job = null;
+        P2_P3_Job job = null;
         // Loop while the simulation is not complete
         while (!printer.isFinished())
         {

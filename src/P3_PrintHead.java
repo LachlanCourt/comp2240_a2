@@ -8,7 +8,7 @@
  ****    time, and acquires its semaphore for mutual exclusion
  *******************************************************************************/
 
-public class PrintHead implements Runnable
+public class P3_PrintHead implements Runnable
 {
     private P3_Printer printer;
     private boolean printing;
@@ -16,7 +16,7 @@ public class PrintHead implements Runnable
     private int id;
 
     // Constructor
-    public PrintHead(P3_Printer printer_, int id_)
+    public P3_PrintHead(P3_Printer printer_, int id_)
     {
         printer = printer_;
         printing = false;

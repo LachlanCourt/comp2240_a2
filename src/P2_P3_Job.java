@@ -8,9 +8,7 @@
  ****    whether it is monochrome or colour
  *******************************************************************************/
 
-package P2;
-
-public class Job
+public class P2_P3_Job
 {
     private String id;
     private int intId;
@@ -18,7 +16,7 @@ public class Job
     private String type;
 
     // Constructor
-    public Job(String id_, int size_)
+    public P2_P3_Job(String id_, int size_)
     {
         id = id_;
         intId = Integer.valueOf(id_.substring(1));

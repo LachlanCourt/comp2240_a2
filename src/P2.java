@@ -7,8 +7,6 @@
  ****    simulate three concurrently running print heads, and starts them all
  *******************************************************************************/
 
-package P2;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -29,7 +27,7 @@ public class P2
     public void run(String[] args)
     {
 
-        ArrayList<Job> jobs = new ArrayList<Job>();
+        ArrayList<P2_P3_Job> jobs = new ArrayList<P2_P3_Job>();
         ArrayList<Thread> threads = new ArrayList<Thread>();
 
         // Check that the file is valid, if the read throws an exception, terminate the simulation
@@ -44,13 +42,13 @@ public class P2
         }
 
         // Create a printer to manage the simulation
-        Printer printer = new Printer(jobs);
+        P2_Printer printer = new P2_Printer(jobs);
         // Create a list of three printheads
-        ArrayList<PrintHead> printHeads = new ArrayList<PrintHead>();
+        ArrayList<P2_PrintHead> printHeads = new ArrayList<P2_PrintHead>();
         for (int i = 0; i < 3; i++)
         {
             // Create each print head with a unique id and add it to both the printHeads list and the list of threads
-            PrintHead temp = new PrintHead(printer, i + 1);
+            P2_PrintHead temp = new P2_PrintHead(printer, i + 1);
             threads.add(new Thread(temp));
             printHeads.add(temp);
         }
@@ -71,13 +69,13 @@ public class P2
      * @return an array of Jobs
      * @throws Exception a file read error either an invalid filename or an empty file
      */
-    public ArrayList<Job> generateFromFile(String filename) throws Exception
+    public ArrayList<P2_P3_Job> generateFromFile(String filename) throws Exception
     {
         // Declare Scanner to read from the file
         Scanner input;
         input = new Scanner(new File(filename));
 
-        ArrayList<Job> jobs = new ArrayList<Job>();
+        ArrayList<P2_P3_Job> jobs = new ArrayList<P2_P3_Job>();
 
         // First line indicates the number of jobs which I then proceed to blatantly ignore
         String line = input.nextLine();
@@ -87,7 +85,7 @@ public class P2
             // Create a new Job and add it to the list
             String id = input.next();
             int size = Integer.valueOf(input.nextLine().substring(1));
-            jobs.add(new Job(id, size));
+            jobs.add(new P2_P3_Job(id, size));
         }
         return jobs;
     }

@@ -13,15 +13,15 @@
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
-public class Printer
+public class P3_Printer
 {
     private String jobType;
     ArrayList<P2_P3_Job> jobs;
     int currentTime;
-    ArrayList<PrintHead> printHeads;
+    ArrayList<P3_PrintHead> printHeads;
     private Semaphore block;
 
-    public Printer(ArrayList<P2_P3_Job> jobs_)
+    public P3_Printer(ArrayList<P2_P3_Job> jobs_)
     {
         jobType = "none";
         jobs = jobs_;
@@ -39,7 +39,7 @@ public class Printer
      * Allows the Printer to be aware of its print heads
      * @param printHeads_ an array list of concurrently running print heads
      */
-    public void setPrintHeads(ArrayList<PrintHead> printHeads_)
+    public void setPrintHeads(ArrayList<P3_PrintHead> printHeads_)
     {
         printHeads = printHeads_;
     }
@@ -82,7 +82,7 @@ public class Printer
         // Before checking the next job in the queue, check if all print heads are done - if so, any job is fair game
         boolean done = true;
         // Loop through all print heads
-        for (PrintHead printHead : printHeads)
+        for (P3_PrintHead printHead : printHeads)
         {
             // If any job is not complete, the jobType stays the same
             if (printHead.printing())
@@ -151,7 +151,7 @@ public class Printer
         // Assume the jobs are done
         boolean done = true;
         // Loop through print heads and check if any are still printing
-        for (PrintHead printHead : printHeads)
+        for (P3_PrintHead printHead : printHeads)
         {
             if (printHead.printing())
             {

@@ -8,19 +8,17 @@
  ****    jobs of the same type at any one time (monochrome or colour)
  *******************************************************************************/
 
-package P2;
-
 import java.util.ArrayList;
 
-public class Printer
+public class P2_Printer
 {
     private String jobType;
-    ArrayList<Job> jobs;
+    ArrayList<P2_P3_Job> jobs;
     int currentTime;
-    ArrayList<PrintHead> printHeads;
+    ArrayList<P2_PrintHead> printHeads;
 
     // Constructor
-    public Printer(ArrayList<Job> jobs_)
+    public P2_Printer(ArrayList<P2_P3_Job> jobs_)
     {
         jobType = "none";
         jobs = jobs_;
@@ -31,7 +29,7 @@ public class Printer
      * Allows the Printer to be aware of its print heads
      * @param printHeads_ an array list of concurrently running print heads
      */
-    public void setPrintHeads(ArrayList<PrintHead> printHeads_)
+    public void setPrintHeads(ArrayList<P2_PrintHead> printHeads_)
     {
         printHeads = printHeads_;
     }
@@ -74,7 +72,7 @@ public class Printer
         // Before checking the next job in the queue, check if all print heads are done - if so, any job is fair game
         boolean done = true;
         // Loop through all print heads
-        for (PrintHead printHead : printHeads)
+        for (P2_PrintHead printHead : printHeads)
         {
             // If any job is not complete, the jobType stays the same
             if (printHead.printing())
@@ -115,11 +113,11 @@ public class Printer
      * Gets the next job in the list
      * @return the next job iin the list, or null if the list is empty
      */
-    Job getJob()
+    P2_P3_Job getJob()
     {
         if (jobs.size() > 0)
         {
-            Job job = jobs.remove(0);
+            P2_P3_Job job = jobs.remove(0);
             if (job != null)
             {
                 jobType = job.getType();
@@ -143,7 +141,7 @@ public class Printer
         // Assume the jobs are done
         boolean done = true;
         // Loop through print heads and check if any are still printing
-        for (PrintHead printHead : printHeads)
+        for (P2_PrintHead printHead : printHeads)
         {
             if (printHead.printing())
             {
